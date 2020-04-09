@@ -1,4 +1,4 @@
-# NYS-datastore-warmup
+#datastore-warmup-example
 
 /warmup hits the dummy data creation
 /listdata reads from datastore
