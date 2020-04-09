@@ -1,0 +1,25 @@
+{
+  "name": "nys-datastore-warmup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/datastore": "^5.1.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npm install && node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gsuppy/NYS-datastore-warmup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gsuppy/NYS-datastore-warmup/issues"
+  },
+  "homepage": "https://github.com/gsuppy/NYS-datastore-warmup#readme"
+}
