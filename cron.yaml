@@ -1,0 +1,9 @@
+cron:
+  - description: "Push sample data into Datastore"
+    url: /warmup
+    schedule: every 2 minutes
+    timezone: EST
+  - description: "Read sample data from Datastore"
+    url: /listdata
+    schedule: every 4 minutes
+    timezone: EST
