@@ -1,4 +1,4 @@
-#datastore-warmup-example
+# GCP Datastore NodeJS Warm-Up example
 
 /warmup hits the dummy data creation
 /listdata reads from datastore
