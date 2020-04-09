@@ -1,1 +1,8 @@
 # NYS-datastore-warmup
+
+/warmup hits the dummy data creation
+
+/listdata reads from datastore
+
+`gcloud app deploy` to deploy new version and
+`gcloud app deploy cron.yaml` to deploy cron file
