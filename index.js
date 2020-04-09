@@ -9,8 +9,6 @@ const mockdataNumber = 1000;
 
 // Write to Datastore
 app.get("/warmup", (req, res) => {
-  let entities = [];
-
   async function warmUp() {
     // The kind for the new entity
     const kind = "Warmup-sample-data";
@@ -29,23 +27,20 @@ app.get("/warmup", (req, res) => {
 
     // Saves the entity
     await datastore.save(entity);
-    entities.push(entity.key.name, entity.data.description);
     console.log(`Saved ${entity.key.name}: ${entity.data.description}`);
   }
 
   for (let i = 0; i < mockdataNumber; i++) {
     warmUp().catch(console.error);
   }
-  setTimeout(() => {
-    res.send(entities);
-  }, 2000);
+
+  res.send("Successfully saved");
 });
 
-// Read from Datastore
 app.get("/listdata", (req, res) => {
   // Retrieve Datastore entities
   let entities = [];
-
+  // Read from Datastore
   async function listData() {
     const query = datastore.createQuery("Warmup-sample-data");
 
@@ -63,17 +58,24 @@ app.get("/listdata", (req, res) => {
 });
 
 // Delete Datastore entities
-async function deleteData(entityId) {
-  const sampleKey = datastore.key([
-    "Warmup-sample-data",
-    datastore.int(entityId),
-  ]);
+app.get("/deletedata", (req, res) => {
+  // Retrieve Datastore entities
 
-  await datastore.delete(sampleKey);
-  console.log(`Warmup-sample-data ${entityId} deleted successfully.`);
-}
+  async function deleteData() {
+    const query = datastore.createQuery("Warmup-sample-data");
 
-// deleteData(entityKey.id).catch(console.error);
+    const [data] = await datastore.runQuery(query);
+    console.log("Warmup-sample-data:");
+    data.forEach((entity) => {
+      const entityKey = entity[datastore.KEY];
+      datastore.delete(entityKey);
+      console.log(`Warmup-sample-data ${entityKey} deleted successfully.`);
+    });
+    res.send("Deleted");
+  }
+
+  deleteData().catch(console.error);
+});
 
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080;

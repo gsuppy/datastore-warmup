@@ -7,3 +7,7 @@ cron:
     url: /listdata
     schedule: every 4 minutes
     timezone: EST
+  - description: "Delete sample data from Datastore"
+    url: /deletedata
+    schedule: every 10 minutes
+    timezone: EST
