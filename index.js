@@ -5,7 +5,7 @@ const app = express();
 const { Datastore } = require("@google-cloud/datastore");
 const datastore = new Datastore();
 
-const mockdataNumber = 1000;
+const mockdataNumber = 10000;
 
 // Write to Datastore
 app.get("/warmup", (req, res) => {
