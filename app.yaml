@@ -14,3 +14,8 @@
 # [START gae_quickstart_yaml]
 runtime: nodejs12
 # [END gae_quickstart_yaml]
+
+instance_class: F4
+automatic_scaling:
+  max_instances: 15
+  target_cpu_utilization: 0.6

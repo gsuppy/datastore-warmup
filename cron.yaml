@@ -5,9 +5,9 @@ cron:
     timezone: EST
   - description: "Read sample data from Datastore"
     url: /listdata
-    schedule: every 3 minutes
+    schedule: every 5 minutes
     timezone: EST
   - description: "Delete sample data from Datastore"
     url: /deletedata
-    schedule: every 1 minutes
+    schedule: every 60 minutes
     timezone: EST
