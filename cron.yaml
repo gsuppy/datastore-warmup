@@ -1,13 +1,13 @@
 cron:
   - description: "Push sample data into Datastore"
     url: /warmup
-    schedule: every 4 minutes
+    schedule: every 2 minutes
     timezone: EST
   - description: "Read sample data from Datastore"
     url: /listdata
-    schedule: every 6 minutes
+    schedule: every 3 minutes
     timezone: EST
   - description: "Delete sample data from Datastore"
     url: /deletedata
-    schedule: every 2 minutes
+    schedule: every 1 minutes
     timezone: EST
