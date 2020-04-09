@@ -5,7 +5,7 @@ const app = express();
 const { Datastore } = require("@google-cloud/datastore");
 const datastore = new Datastore();
 
-const mockdataNumber = 10000;
+const mockdataNumber = 30000;
 
 // Write to Datastore
 app.get("/warmup", (req, res) => {
@@ -127,12 +127,19 @@ app.get("/warmup", (req, res) => {
   for (let i = 0; i < mockdataNumber; i++) {
     warmUp().catch(console.error);
   }
+
+  setTimeout(() => {
+    for (let i = 0; i < mockdataNumber; i++) {
+      warmUp().catch(console.error);
+    }
+  }, 30000);
+
   res.send("Successfully saved");
 });
 
 app.get("/listdata", (req, res) => {
   // Retrieve Datastore entities
-  let entities = [];
+  // let entities = [];
   // Read from Datastore
   async function listData() {
     const query = datastore.createQuery("Claim");
@@ -143,12 +150,17 @@ app.get("/listdata", (req, res) => {
       const entity = data[i];
       const entityKey = entity[datastore.KEY];
       console.log(entityKey, entity);
-      entities.push(entityKey, entity);
+      // entities.push(entityKey, entity);
     }
-    res.send(entities);
+    // res.send(entities);
   }
 
   listData().catch(console.error);
+
+  setTimeout(() => {
+    listData().catch(console.error);
+  }, 30000);
+  res.send("Success");
 });
 
 // Delete Datastore entities
